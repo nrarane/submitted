@@ -1,0 +1,566 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers|Fredoka+One|Kaushan+Script|Lobster|Luckiest+Guy|Righteous|Shrikhand|Dawning+of+a+New+Day|Montez|Roboto+Condensed|Stalemate');
+
+body{
+  color: #525252;
+}
+
+.banner{
+  padding: 55px 0;
+}
+
+.banner.home{
+  background: white;
+  /*background: url('https://placeimg.com/640/480/people');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tab-content{
+  padding: 10px 0;
+}
+
+input{
+  margin-bottom: 10px;
+}
+
+.btn-block{
+  width: 100%;
+}
+
+.text-mute{
+  color: rgb(150, 150, 150);
+}
+
+.row{
+  margin: 0;
+}
+
+.float-right{
+  float: right;
+}
+
+.float-left{
+  float: left;
+}
+
+.alert{
+  width: 100%;
+  padding: 15px;
+  background: #eee;
+  color: rgb(105, 105, 105);
+  margin-bottom: 15px;
+  border-top: 1px solid rgb(184, 184, 184);
+  border-bottom: 1px solid rgb(184, 184, 184);
+}
+
+.alert.alert-danger{
+  background: rgb(255, 220, 220);
+  color: rgb(212, 112, 112);
+  border-top: 1px solid rgb(212, 112, 112);
+  border-bottom: 1px solid rgb(212, 112, 112);
+}
+
+.alert.alert-success{
+  color: rgb(113, 192, 92);
+  background: rgb(212, 240, 209);
+  border-top: 1px solid rgb(113, 192, 92);
+  border-bottom: 1px solid rgb(113, 192, 92);
+}
+
+.alert.alert-info{
+  color: rgb(92, 152, 192);
+  background: rgb(209, 231, 240);
+  border-top: 1px solid rgb(92, 152, 192);
+  border-bottom: 1px solid rgb(92, 152, 192);
+}
+
+.chip{
+  
+}
+
+.chip-block{
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.chip.chip-text-center, .alert.alert-text-center{
+  text-align: center;
+}
+
+.chip.chip-danger{
+  color: rgb(212, 112, 112);
+  background: rgb(255, 220, 220);
+}
+
+.chip.chip-success{
+  color: rgb(113, 192, 92);
+  background: rgb(212, 240, 209);
+}
+
+.chip.chip-info{
+  color: rgb(92, 152, 192);
+  background: rgb(209, 231, 240);
+}
+
+.chip.chip-warning{
+  color: rgb(0 , 0, 0);
+  background: rgb(252, 169, 172);
+}
+
+#form_cnfrm_reg{
+  display: none;
+}
+
+.font-slim{
+  font-weight: 100;
+}
+
+nav{
+  margin-bottom: 15px;
+}
+
+.nav_user_name{
+  font-size: 1.25em;
+}
+
+h1, h2, h3, h4, h5{
+  margin-top: 0;
+}
+
+hr{
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  padding: 0; 
+}
+
+.side-nav .divider{
+  margin: 0;
+}
+
+.profile-container{
+  overflow: hidden;
+}
+
+.profile{
+  height: 250px;
+  width: 100%;
+  position: relative;
+}
+
+.profile .bg, .user-view .background{
+  position: absolute;
+  background-color: #525252;
+  /*background: url('https://placeimg.com/640/480/people');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(8px);
+  transform: scale(1.2);
+  /*zoom: -250%;*/
+
+  width: 100%;
+  height: 100%;
+}
+
+.profile .info{
+  height: 130px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px;
+}
+
+.profile .info img{
+  height: 114px;
+  /*width: 114px;*/
+  box-shadow: 0 0 20px #525252;
+}
+
+.profile .names{
+  position: absolute;
+  bottom: 0;
+  padding-left: 15px;
+  color: #fff;
+  text-shadow: 0 0 10px #525252;
+}
+
+.profile .names span{
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.profile .tabs_{
+  width: 100%;
+}
+
+.profile-container .card-content{
+  min-height: 175px;
+}
+
+.profile-container .tabs .tab{
+  text-transform: none;
+}
+
+.profile-menu-btn{
+  position: absolute;
+  right: 0;
+  bottom: -18px;
+  z-index: 1;
+  width: 36px;
+  padding: 0;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.materialboxed{
+  z-index: 10000;
+}
+
+.card.search{
+
+}
+
+.card.search .visits{
+  font-size: 16px;
+}
+
+.card.search .visits i{
+  font-size: 14px;
+}
+
+.card.search .card-content,
+.card.search .card-action{
+  padding: 12px;
+}
+
+.card.search .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+  text-transform: none;
+  margin: 0;
+}
+
+.card.search .name{
+  font-size: 1.5em;
+}
+
+.card.search .card-content{
+  max-height: 190px;
+  overflow: auto;
+}
+
+.search-user-card-img{
+  background-color: #525252;
+  /*background: url('https://placeimg.com/640/480/people');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 135px;
+}
+
+.p404{
+  margin: 85px 0;
+  color: #858585;
+}
+
+.p404 h2{
+  
+}
+
+.p404 h1{
+  font-family: 'Kaushan Script', cursive;
+  font-size: 12em;
+  background-clip: text;
+}
+
+.preview-image-upload{
+  width: 175px;
+}
+
+#profile-preview{
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+}
+
+.user-view a img{
+  box-shadow: 0 0 20px #525252;
+}
+
+.user-view {
+  text-shadow: 0 0 10px #525252;
+}
+
+.messager{
+  position: relative;
+}
+
+.messager .inner{
+  padding: 0;
+}
+
+.messager .inner .img{
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+
+  background: #424242;
+  background-size: contain;
+  background-size: cover;
+  background-position: center;
+}
+
+.connections.collection .badge div{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 4px 0;
+  background: rgb(134, 218, 109);
+  box-shadow: 0 0 10px rgb(209, 209, 129);
+}
+
+.messager .inner .img div{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 0;
+  background: rgb(134, 218, 109);
+  box-shadow: 0 0 10px rgb(209, 209, 129);
+}
+
+.collapsible li.active{
+  background: #f5f4f4;
+}
+
+.messager .inner .collapsible-header{
+  padding: 10px;
+  background-color: transparent;
+}
+
+.messager .inner .collapsible-header span{
+  font-size: 20px;
+  font-weight: 300;
+  margin: 5px 0 5px 5px;
+}
+
+.messager .inner .collapsible-body{
+  padding: 10px;
+  height: 250px;
+  border-bottom: 1px solid #e6e6e6;
+  background: #ffffff;
+  background: transparent;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, .05);
+}
+
+.messager .inner .collapsible-body.input{
+  height: auto;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  background: transparent;
+
+  box-shadow: inset 0 0 0 transparent;
+}
+
+.messager .inner .collapsible-body .chat{
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+}
+
+.messager .inner .collapsible-body .chat p{
+  position: relative;
+}
+
+.messager .inner .collapsible-body .chat p .chat-date{
+  position: absolute;
+  right: 15px;
+  bottom: -20px;
+}
+
+.messager .inner .collapsible-body .chat .mssg.loading{
+  padding: 0;
+}
+
+.messager .inner .collapsible-body .chat .mssg.loading p{
+  width: 100%;
+  text-align: center;
+}
+
+.messager .inner .collapsible-body .chat .mssg{
+  padding-bottom: 15px;
+  width: 100%;
+  color: #727272;
+  font-weight: 300;
+}
+
+.messager .inner .collapsible-body .chat .mssg p{
+  background: #000000;
+  width: 85%;
+  margin: 5px 0;
+  padding: 10px;
+
+  background: rgb(255, 255, 255);
+  border: 1px solid #e2e2e2;
+}
+
+.messager .inner .collapsible-body .chat .mssg.other p{
+  float: left;
+  border-radius: 30px 30px 30px 0px;
+}
+
+.messager .inner .collapsible-body .chat .mssg.user p{
+  float: right;
+  border-radius: 30px 30px 0px 30px;
+}
+
+.user-offline{
+  display: none;
+}
+
+.user-online{
+  display: block;
+}
+
+.address_input{
+  margin-bottom: 15px;
+}
+
+.login_n_reg .btn{
+  margin-bottom: 11px;
+}
+
+.card-title i{
+  font-size: 16px;
+}
+
+#more .collapsible-body {
+  padding: 15px;
+}
+
+#more .collapsible-body .collection-item{
+  padding: 10px;
+}
+
+.suggestions .card .card-image{
+  height: 125px;
+  background: url('https://placeimg.com/640/480/people');
+  background-color: #7a7a7a;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.suggestions .card .fame{
+  width: 100%;
+  /*text-align: right;*/
+}
+
+.suggestions .card .fame i{
+  font-size: 17px;
+}
+
+.suggestions .card .card-content{
+  padding: 15px;
+}
+
+.suggestions .card .card-content h5 small span{
+  font-weight: 400;
+}
+
+.suggestions .card .card-title{
+  padding: 0;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  text-shadow: 0 0 5px #2b2b2b;
+}
+
+.suggestions .card .card-title a{
+  color: #fff;
+  font-weight: 100;
+}
+
+.suggestions .card .card-title a:hover{
+  text-decoration: underline;
+}
+
+.suggestions .card .card-title small span{
+  font-weight: 400;
+}
+
+.advanced_search_dropdown_btn_container{
+  text-align: right;
+}
+
+.advanced_search_dropdown_btn{
+  text-transform: none;
+  padding: 0 15px;
+}
+
+.carousel-item{
+  position: relative;
+}
+
+.like_profile{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  margin-bottom: 5px;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 100;
+  color: #fff;
+  text-shadow: 0 0 6px #000000;
+}
+
+.like_profile:hover{
+  color: rgb(211, 211, 211);
+  text-decoration: underline;
+  text-shadow: 0 0 8px #000000;
+}
+
+.like_profile.liked{
+  font-weight: bold;
+}
+
+#btn_change_email, #verify_email_token_container,
+#forgotpassword_btn_continue, #forgotpassword_inputs_container{
+  display: none;
+}
+
+.modal .modal-footer{
+  border-top: 1px solid rgb(206, 206, 206);
+}
+
+.margin-zero{
+  margin: 0;
+}
+
+.footer-mine {
+  padding: 20px;
+  text-align: center;
+  background: #555;
+  color: white;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+}
+
+.my-logo {
+  margin: 0px auto;
+  font-family: Montez;
+  font-size: 3.75em;
+}

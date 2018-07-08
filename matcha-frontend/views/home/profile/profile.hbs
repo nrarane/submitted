@@ -1,0 +1,178 @@
+{{>usernavbar}}
+
+<div class="container">
+    <div class="row">
+        <div class="col l7 s12">
+            {{#if data}}
+                <div class="card profile-container">
+                    <div class="profile">
+                        {{#if data.img1}}
+                            <div class="bg" style="background: url('{{data.img1.url}}')"></div>
+                        {{else}}
+                            <div class="bg" style="background: #b1b1b1"></div>
+                        {{/if}}
+                        
+                        <div class="info">
+                            {{#if data.img1}}
+                                <img src="{{data.img1.url}}" alt="">
+                            {{else}}
+                                <img src="http://smk.org.uk/wp-content/uploads/avatar.jpg" alt="">
+                            {{/if}}
+                            <span class="card-title names">
+                                {{data.firstname}}, {{data.lastname}}<br>
+                                <span>{{data.username}}</span>
+                                <br>
+                                <span><i class="material-icons">star</i> {{data.visits}}%</span>
+                            </span>
+                        </div>
+                        
+                        <a class='dropdown-button btn profile-menu-btn' href='#' data-activates='profile-menu'><i class="material-icons">more_vert</i></a>
+                        <ul id='profile-menu' class='dropdown-content'>
+                            {{#ifSame user_data.id data.id}}
+                                <li><a href="./{{user_data.username}}/update">Update Profile</a></li>
+                            {{else}}
+                                {{#if data.relationship}}
+                                    {{#ifSame data.relationship.status '1'}}
+                                        <li><a onclick="connect_to_user('{{user_data.session}}', '{{data.username}}', 1)" id="users_relationship"><b>Unconnect</b></a></li>
+                                    {{else}}
+                                        {{#ifSame data.relationship.user_id_from data.id}}
+                                            <li><a onclick="connect_to_user('{{user_data.session}}', '{{data.username}}', 1)" id="users_relationship"><b>Accept Connection</b></a></li>
+                                        {{else}}
+                                            <li><a onclick="connect_to_user('{{user_data.session}}', '{{data.username}}', 0)" id="users_relationship"><b>Cancel Connection</b></a></li>
+                                        {{/ifSame}}
+                                    {{/ifSame}}
+                                {{else}}
+                                    {{#if user_data.img1.url}}
+                                        {{#if data.img1.url}}
+                                            <li><a onclick="connect_to_user('{{user_data.session}}', '{{data.username}}', 0)" id="users_relationship">Connect</a></li>
+                                        {{/if}}
+                                    {{/if}}
+                                {{/if}}
+                                {{#ifSame data.relationship.status '1'}}
+                                    <li class="divider"></li>
+                                    <li><a class="modal-trigger" href="#report" onclick="ready_user_report({{data.id}} ,'{{data.username}}')">Report</a></li>
+                                    {{#if data.blocked_user}}
+                                        <li><a onclick="unblock_user('{{user_data.session}}', '{{data.username}}')"><b>Unblock</b></a></li>
+                                    {{else}}
+                                        <li><a onclick="block_user('{{user_data.session}}', '{{data.username}}')">Block</a></li>
+                                    {{/if}}
+                                {{/ifSame}}
+                            {{/ifSame}}
+                        </ul>
+                    </div>
+                    <!--<div class="row" style="margin: 0">-->
+                        <ul class="tabs">
+                            <li class="tab _colS _s4S"><a href="#photos">Photos</a></li>
+                            <li class="tab _colS _s4S"><a href="#about">About</a></li>
+                            {{#ifSame user_data.id data.id}}
+                                <li class="tab _colS _s4S"><a href="#more">More</a></li>
+                            {{/ifSame}}
+                        </ul>
+                    <!--</div>-->
+                    <div class="card-content">
+                        <div id="about" >
+                            <p><b>Address</b>: <br> {{data.address}}</p>
+                            <p><b>Gender</b>: <br> {{data.gender}}</p>
+                            <p><b>Date of Birth</b>: <br> {{data.date_of_birth}}</p>
+                            <p><b>Sexual Preference</b>: <br> {{data.sexual_preference}}</p>
+                            <p><b>Biography</b>: <br> {{data.biography}}</p>
+                            <div id="tags_container">
+                                <p><b>Tags</b>:</p>
+                                {{#if data.tags}}
+                                    {{#each data.tags}}
+                                        <div class="chip">
+                                            <a href="#{{tag}}">#{{tag}}</a>
+                                        </div>
+                                    {{/each}}
+                                {{else}}
+                                    <div class="chip chip-info" style="margin: 0;">You have no tags</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div id="photos" class="align-right">
+                            {{#if data.images}}
+                                <div class="carousel carousel-slider">
+                                    {{#each data.images}}
+                                        <a class="carousel-item" href="#code{{code}}!">
+                                            <img src="{{url}}" class="">
+                                            <!--
+                                            {{#ifSame code '1'}}
+                                                <a href="#" class="like_profile liked">like {{code}}</a>
+                                            {{/ifSame}}
+                                            -->
+                                        </a>
+                                    {{/each}}
+                                </div>
+                                <br>
+                                <small class="text-mute">Swip left or right</small>
+                            {{else}}
+                                <div class="alert alert-info alert-text-center">
+                                    No photos as yet...
+                                </div>
+                            {{/if}}
+                        </div>
+                        {{#ifSame user_data.id data.id}}
+                            <div id="more" >
+                                {{#if data.likes_data}}
+                                    <ul class="collapsible" data-collapsible="accordion">
+                                        <li>
+                                            <div class="collapsible-header">
+                                                Likes
+                                                <span class="badge">{{data.likes_data.count}}</span>
+                                            </div>
+                                            <div class="collapsible-body white">
+                                                <ul class="collection">
+                                                    {{#each data.likes_data.data}}
+                                                        <li class="collection-item">
+                                                            <div>
+                                                                <a href="/profile/{{username}}">{{username}}</a>
+                                                                <span class="secondary-content">{{date_created}}</span>
+                                                            </div>
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                {{/if}}
+
+                                {{#if data.visits_data}}
+                                    <ul class="collapsible" data-collapsible="accordion">
+                                        <li>
+                                            <div class="collapsible-header">
+                                                <!--<i class="material-icons">filter_drama</i>-->
+                                                Views
+                                                <span class="badge">{{data.visits_data.count}}</span>
+                                            </div>
+                                            <div class="collapsible-body white">
+                                                <ul class="collection">
+                                                    {{#each data.visits_data.data}}
+                                                        <li class="collection-item">
+                                                            <div>
+                                                                <a href="/profile/{{username}}">{{username}}</a>
+                                                                <span class="secondary-content">{{date_created}}</span>
+                                                            </div>
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                {{/if}}
+                            </div>
+                        {{/ifSame}}
+                    </div>
+                </div>
+            {{else}}
+                <div class="alert alert-danger alert-text-center" style="margin: 0">
+                    {{error}}
+                </div>
+            {{/if}}
+        </div>
+        {{#ifSame user_data.id data.id}}{{else}}
+        <div class="col l5 s12">
+            {{>suggestions}}
+        </div>
+        {{/ifSame}}
+    </div>
+</div>

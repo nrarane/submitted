@@ -1,0 +1,43 @@
+Suggests via
+
+age -3, and +3 years:
+    SELECT * FROM `tbl_users` WHERE date_of_birth BETWEEN DATE_ADD('2017-11-23', INTERVAL -3 YEAR) AND DATE_ADD('2017-11-23', INTERVAL 3 YEAR) AND id != 1;
+
+gender (wrong):
+    SELECT * FROM tbl_users WHERE 'female' = gender AND sexual_preference = 'male';
+
+location:
+    ?: SELECT * FROM `tbl_users` WHERE address LIKE "%Austria%";
+    SELECT username FROM tbl_users, tbl_user_locations WHERE tbl_users.id = tbl_user_locations.user_id AND (tbl_users.address LIKE '%Mafikeng%' OR tbl_user_locations.location LIKE '%Mafikeng%');
+
+ALTER TABLE tbl_users ADD FULLTEXT(biography);
+
+tags:
+    1. SELECT tbl_interests.id
+        FROM tbl_users, tbl_interests, tbl_user_interests
+            WHERE tbl_users.id = tbl_user_interests.user_id AND tbl_user_interests.interest_id = tbl_interests.id AND tbl_users.id = 2
+
+    SELECT tbl_users.username, tbl_interests.id, tbl_interests.tag
+        FROM tbl_interests 
+            INNER JOIN tbl_user_interests ON
+                tbl_interests.id = tbl_user_interests.interest_id
+            INNER JOIN tbl_users ON
+                tbl_users.id = tbl_user_interests.user_id
+            WHERE tbl_users.id = 2
+
+    2. SELECT DISTINCT username, tbl_users.id as 'user_id', tag, tbl_interests.id
+        FROM tbl_users, tbl_interests, tbl_user_interests
+            WHERE tbl_users.id = tbl_user_interests.user_id AND tbl_user_interests.interest_id = tbl_interests.id AND 
+                tbl_interests.id IN
+                (
+                    SELECT tbl_interests.id
+                        FROM tbl_users, tbl_interests, tbl_user_interests
+                            WHERE tbl_users.id = tbl_user_interests.user_id AND tbl_user_interests.interest_id = tbl_interests.id AND tbl_users.id = 2
+                )
+                AND tbl_users.id != 2;
+
+    3. SELECT id as 'user' FROM tbl_users WHERE id IN (SELECT tbl_users.id as 'user_id' FROM tbl_users, tbl_interests, tbl_user_interests WHERE tbl_users.id = tbl_user_interests.user_id AND tbl_user_interests.interest_id = tbl_interests.id AND tbl_interests.id IN (SELECT tbl_interests.id FROM tbl_users, tbl_interests, tbl_user_interests WHERE tbl_users.id = tbl_user_interests.user_id AND tbl_user_interests.interest_id = tbl_interests.id AND tbl_users.id = 2) AND tbl_users.id != 2);
+
+    4. SELECT tbl_users.id as '_user_id', tbl_users.username FROM tbl_users WHERE tbl_users.id IN ( SELECT tbl_user_interests.user_id FROM tbl_user_interests WHERE tbl_user_interests.interest_id IN ( SELECT tbl_user_interests.interest_id FROM tbl_interests INNER JOIN tbl_user_interests ON tbl_interests.id = tbl_user_interests.interest_id INNER JOIN tbl_users ON tbl_users.id = tbl_user_interests.user_id WHERE tbl_users.id = 2 ) )
+
+    5. (final) SELECT tbl_user_interests.user_id FROM tbl_user_interests WHERE tbl_user_interests.interest_id IN ( SELECT tbl_user_interests.interest_id FROM tbl_interests INNER JOIN tbl_user_interests ON tbl_interests.id = tbl_user_interests.interest_id INNER JOIN tbl_users ON tbl_users.id = tbl_user_interests.user_id WHERE tbl_users.id = 2 ) ORDER BY tbl_user_interests.user_id
